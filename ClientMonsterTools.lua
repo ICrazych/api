@@ -36,11 +36,14 @@ function module.GetSpawnerCooldown(spawnerName)
 
     if TimerGui:FindFirstChild(importants.TimerText) then
         if TimerGui.TimerLabel.Visible == true then
-            return revertTimeString((TimerGui.TimerLabel.Text:split(": "))[2])
+            local isConverted,timeInSeconds = pcall(function() 
+                return revertTimeString((TimerGui.TimerLabel.Text:split(": "))[2])    
+            end)
+            return (isConverted and timeInSeconds) or math.huge
         else
             return 0
         end
     end
 end
 
-return module
+return module, print("ClientMonsterTools.lua loaded")
