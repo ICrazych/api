@@ -48,7 +48,7 @@ function module.GetSpawnerCooldown(spawnerName)
     local cooldown = monsterData.Stats.RespawnCooldown
     if not cooldown then return math.huge end
 
-    local MonsterCooldownReduction = table1.GetMonsterCooldownReduction()
+    local MonsterCooldownReduction = module.GetMonsterCooldownReduction()
 
     if MonsterCooldownReduction then
         cooldown = cooldown * (1 - MonsterCooldownReduction)
